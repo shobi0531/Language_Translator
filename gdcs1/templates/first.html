@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Your existing head content -->
+</head>
+<body>
+    <br><br>
+    <div class="container">
+        <h1>Text-to-Text Converter</h1>
+        <p>
+            This simple web app is used for text translation and text to text.
+        </p>
+        <br><br>
+        <div class="row">
+            <div class="col">
+                <form action="/translate" method="POST">
+                    <div class="form-group">
+                        <label for="select-language-code"><strong>Select Language:</strong></label>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <select class="form-control" id="select-language-code" name="selected_language_code_1">
+                                    <option>Select a language</option>
+                                    {% for code, language in languages.items() %}
+                                    <option value="{{ code }}">{{ language }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="selected-lang-code"><strong>Selected Language Code:</strong></label>
+                                <input type="text" class="form-control" id="selected-lang-code" name="selected_language_code_2" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="text-to-translate"><strong>Enter the text you'd like to translate:</strong></label>
+                        <textarea class="form-control" id="text-to-translate" name="text_to_translate" rows="5"></textarea>
+                    </div>
+                    <center>
+                    <button type="submit" class="btn btn-primary mb-2" id="translate">Translate text</button>
+                    </center>
+                </form>
+            </div>
+            
+            <div class="col">
+                <form>
+                    <div class="form-group">
+                        <label for="select-language-code-2"><strong>Select Language:</strong></label>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <select class="form-control" name="selected_language_code_2" id="select-language-code-2" onchange="updateLanguageCode2()">
+                                    <option>Select a language</option>
+                                    <option value="as-IN">Assamese(India)</option>
+                                    <!-- Add other language options here -->
+                                </select>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="selected-lang-code-2"><strong>Selected Language Code:</strong></label>
+                                <input type="text" class="form-control" id="selected-lang-code-2" name="selected_language_code_2" readonly>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <form>
+                    <div class="form-group" id="translator-text-response">
+                        <label for="translation-result"><strong>Translated text:</strong></label>
+                        <textarea readonly class="form-control" id="translation-result" name="translation_result" rows="5">{{ translation }}</textarea>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+   </body>
+</html>

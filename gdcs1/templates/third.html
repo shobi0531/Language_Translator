@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="Text-to-Speech Converter" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <title>Text-to-Speech Converter</title>
+    <style>
+      body {
+        background: linear-gradient(90deg, #3498db, #9b59b6);
+      }
+    </style>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var selectLanguage = document.getElementById("select-language-code");
+        var selectedLangCode = document.getElementById("selected-lang-code-2");
+
+        selectLanguage.addEventListener("change", function () {
+          selectedLangCode.value = selectLanguage.value;
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <br /><br />
+    <div class="container">
+      <h1>Speech-to-Text Converter</h1>
+      <p>This simple web app is used to convert speech to text.</p>
+      <div class="row">
+        <div class="col">
+          <div id="audio-playback">
+            <audio id="audio" controls>
+              <source id="audio-source" type="audio/mpeg" />
+            </audio>
+          </div>
+        </div>
+      </div>
+      <center>
+        <button type="submit" class="btn btn-primary mb-2" id="text-to-speech">
+          Convert to Text
+        </button>
+      </center>
+      <div class="row">
+        <div class="col">
+          <form>
+            <div class="form-group">
+              <label for="text-to-convert"
+                ><strong
+                  >Enter the text you'd like to convert to speech:</strong
+                ></label
+              >
+              <textarea
+                class="form-control"
+                id="text-to-convert"
+                rows="5"
+              ></textarea>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

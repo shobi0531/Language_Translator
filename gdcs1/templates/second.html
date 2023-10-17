@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="Text-to-Speech Converter" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <title>Text-to-Speech Converter</title>
+    <style>
+      body {
+        background: linear-gradient(90deg, #3498db, #9b59b6);
+      }
+    </style>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var selectLanguage = document.getElementById("select-language-code");
+        var selectedLangCode = document.getElementById("selected-lang-code-2");
+
+        selectLanguage.addEventListener("change", function () {
+          selectedLangCode.value = selectLanguage.value;
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <br /><br />
+    <div class="container">
+      <h1>Text-to-Speech Converter</h1>
+      <p>This simple web app is used to convert text to speech.</p>
+      <br /><br />
+      <div class="row">
+        <div class="col">
+          <form action="/convert" method="POST">
+            <div class="form-group">
+              <label for="text-to-convert"
+                ><strong
+                  >Enter the text you'd like to convert to speech:</strong
+                ></label
+              >
+              <textarea
+                class="form-control"
+                id="text-to-convert"
+                name="text-to-convert"
+                rows="5"
+              ></textarea>
+            </div>
+            <div class="form-group">
+              <label for="select-language-code"
+                ><strong>Select Language:</strong></label
+              >
+              <div class="row">
+                <div class="col-md-6">
+                  <select
+                    class="form-control"
+                    id="select-language-code"
+                    name="select-language-code"
+                  >
+                    <option>Select a language</option>
+                    {% for code, label in supported_languages.items() %}
+                    <option value="{{ code }}">{{ label }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <label for="selected-lang-code-2"
+                    ><strong>Selected Language Code:</strong></label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="selected-lang-code-2"
+                    name="selected-lang-code-2"
+                    readonly
+                  />
+                </div>
+              </div>
+            </div>
+            <center>
+              <button
+                type="submit"
+                class="btn btn-primary mb-2"
+                id="text-to-speech"
+              >
+                Convert to Speech
+              </button>
+            </center>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

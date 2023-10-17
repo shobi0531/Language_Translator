@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="Text-to-Speech Converter" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <title>Text-to-Speech Converter</title>
+    <style>
+      body {
+        background: linear-gradient(90deg, #3498db, #9b59b6);
+      }
+    </style>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var selectLanguage = document.getElementById("select-language-code");
+        var selectedLangCode = document.getElementById("selected-lang-code-2");
+
+        selectLanguage.addEventListener("change", function () {
+          selectedLangCode.value = selectLanguage.value;
+        });
+      });
+    </script>
+    <!-- Your head content remains the same -->
+  </head>
+  <body>
+    <br /><br />
+    <div class="container">
+      <h1>Text-to-Speech Converter</h1>
+      <p>This simple web app is used to convert text to speech.</p>
+      <br /><br />
+      <div class="row">
+        <div class="col">
+          <form>
+            <div class="form-group">
+              <label for="select-language-code"
+                ><strong>Select Language:</strong></label
+              >
+              <div class="row">
+                <div class="col-md-6">
+                  <select class="form-control" id="select-language-code">
+                    <option>Select a language</option>
+                    <option value="as-IN">Assamese | Male | Hemanth</option>
+                    <option value="bn-IN">Bengali | Male | Hemanth</option>
+                    <option value="bo-IN">Bodo(India)</option>
+                    <option value="dog-IN">Dogri(India)</option>
+                    <option value="en">English(India)</option>
+                    <option value="gu-IN">Gujarati(India)</option>
+                    <option value="hi-IN">Hindi(India)</option>
+                    <option value="kn-IN">Kannada(India)</option>
+                    <option value="ka-IN">Kashmiri(India)</option>
+                    <option value="kok-IN">Konkani(India)</option>
+                    <option value="ma-IN">Maithili(India)</option>
+                    <option value="ml-IN">Malayalam(India)</option>
+                    <option value="mr-IN">Marathi(India)</option>
+                    <option value="ne-IN">Nepali(India)</option>
+                    <option value="or-IN">Odia(India)</option>
+                    <option value="pa-IN">Punjabi(India)</option>
+                    <option value="sa-IN">Sanskrit(India)</option>
+                    <option value="ta-IN">Tamil(India)</option>
+                    <option value="te-IN">Telugu(India)</option>
+                    <option value="ur-IN">Urdu(India)</option>
+                    <!-- Options for the first select element -->
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <label for="selected-lang-code-1"
+                    ><strong>Selected Language Code:</strong></label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="selected-lang-code-1"
+                    readonly
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="select-language-code-2"
+                ><strong>Select Language:</strong></label
+              >
+              <div class="row">
+                <div class="col-md-6">
+                  <select class="form-control" id="select-language-code-2">
+                    <!-- Options for the second select element -->
+                    <option>Select a language</option>
+                    <option value="as-IN">Assamese | Male | Hemanth</option>
+                    <option value="bn-IN">Bengali | Male | Hemanth</option>
+                    <option value="bo-IN">Bodo(India)</option>
+                    <option value="dog-IN">Dogri(India)</option>
+                    <option value="en">English(India)</option>
+                    <option value="gu-IN">Gujarati(India)</option>
+                    <option value="hi-IN">Hindi(India)</option>
+                    <option value="kn-IN">Kannada(India)</option>
+                    <option value="ka-IN">Kashmiri(India)</option>
+                    <option value="kok-IN">Konkani(India)</option>
+                    <option value="ma-IN">Maithili(India)</option>
+                    <option value="ml-IN">Malayalam(India)</option>
+                    <option value="mr-IN">Marathi(India)</option>
+                    <option value="ne-IN">Nepali(India)</option>
+                    <option value="or-IN">Odia(India)</option>
+                    <option value="pa-IN">Punjabi(India)</option>
+                    <option value="sa-IN">Sanskrit(India)</option>
+                    <option value="ta-IN">Tamil(India)</option>
+                    <option value="te-IN">Telugu(India)</option>
+                    <option value="ur-IN">Urdu(India)</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <label for="selected-lang-code-2"
+                    ><strong>Selected Language Code:</strong></label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="selected-lang-code-2"
+                    readonly
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="text-to-convert"
+                ><strong
+                  >Enter the text you'd like to convert to speech:</strong
+                ></label
+              >
+              <textarea
+                class="form-control"
+                id="text-to-convert"
+                rows="5"
+              ></textarea>
+            </div>
+            <center>
+              <button
+                type="submit"
+                class="btn btn-primary mb-2"
+                id="text-to-speech"
+              >
+                Convert to Speech
+              </button>
+            </center>
+          </form>
+        </div>
+      </div>
+      <center>
+        <div class="row">
+          <div class="col">
+            <div id="audio-playback">
+              <audio id="audio" controls>
+                <source id="audio-source" type="audio/mpeg" />
+              </audio>
+            </div>
+          </div>
+        </div>
+      </center>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var selectLanguage1 = document.getElementById("select-language-code");
+        var selectedLangCode1 = document.getElementById("selected-lang-code-1");
+        var selectLanguage2 = document.getElementById("select-language-code-2");
+        var selectedLangCode2 = document.getElementById("selected-lang-code-2");
+
+        selectLanguage1.addEventListener("change", function () {
+          selectedLangCode1.value = selectLanguage1.value;
+        });
+
+        selectLanguage2.addEventListener("change", function () {
+          selectedLangCode2.value = selectLanguage2.value;
+        });
+      });
+    </script>
+  </body>
+</html>

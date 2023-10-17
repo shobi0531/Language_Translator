@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="Home Page" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <title>Home Page</title>
+    <style>
+      body {
+        background: linear-gradient(90deg, #3498db, #9b59b6);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .btn-container {
+        text-align: center;
+      }
+      .btn {
+        margin: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="btn-container">
+      <button class="btn btn-primary" onclick="location.href='index.html'">
+        Text-to-Text
+      </button>
+      <button
+        class="btn btn-success"
+        onclick="location.href='http://127.0.0.1:5000/'"
+      >
+        Text-to-Speech
+      </button>
+      <button
+        class="btn btn-danger"
+        onclick="location.href='file:///C:/Users/shobi/Downloads/gdcs1/templates/third.html'"
+      >
+        Speech-to-Text
+      </button>
+    </div>
+  </body>
+</html>

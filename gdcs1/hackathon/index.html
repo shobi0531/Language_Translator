@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Translator">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Translator </title>
+
+     <script>
+        $(document).ready(function() {
+            $("#text-to-speech-button").click(function() {
+                var textToSpeech = $("#text-to-translate").val();
+                var selectedVoice = $("#select-voice").val();
+
+                $.ajax({
+                    type: "POST",
+                    url: "/text-to-speech",
+                    data: { text_to_speech: textToSpeech, selected_voice: selectedVoice },
+                    success: function(response) {
+                        // Set the audio source and make it ready to play
+                        $("#audio-source").attr("src", response);
+                        $("#audio")[0].load();
+                        
+                        // Show the audio playback section and play the audio
+                        $("#audio-playback").show();
+                        $("#audio")[0].play();
+                    }
+                });
+            });
+        });
+    </script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #3498db, #9b59b6);
+        }
+    </style>
+    <script>
+        function updateLanguageCode() {
+            var selectedValue = document.getElementById("select-language-code").value;
+            document.getElementById("selected-lang-code").value = selectedValue;
+        }
+        function updateLanguageCode2() {
+            var selectedValue = document.getElementById("select-language-code-2").value;
+            document.getElementById("selected-lang-code-2").value = selectedValue;
+        }
+    </script>
+    
+</head>
+<body>
+    <br><br>
+    <div class="container">
+        <h1>Translate</h1>
+        <p>
+            This simple web app is used for text translation and text-to-speech conversion.
+        </p>
+        <br>
+        <br>
+        <div class="row">
+            <div class="col">
+                <form action="/translate" method="POST">
+                    <div class="form-group">
+                        <label for="select-language-code"><strong>Select Language:</strong></label>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <select class="form-control" id="select-language-code" name="selected_language_code_1" onchange="updateLanguageCode()">
+                                     <option value="as-IN">Assamese(India)</option>
+                                    <option value="bn-IN">Bengali(India)</option>
+                                    <option value="bo-IN">Bodo(India)</option>
+                                    <option value="dog-IN">Dogri(India)</option>
+                                    <option value="en">English(India)</option>
+                                    <option value="gu-IN">Gujarati(India)</option>
+                                    <option value="hi-IN">Hindi(India)</option>
+                                    <option value="kn-IN">Kannada(India)</option>
+                                    <option value="ka-IN">Kashmiri(India)</option>
+                                    <option value="kok-IN">Konkani(India)</option>
+                                    <option value="ma-IN">Maithili(India)</option>
+                                    <option value="ml-IN">Malayalam(India)</option>
+                                    <option value="mr-IN">Marathi(India)</option>
+                                    <option value="ne-IN">Nepali(India)</option>
+                                    <option value="or-IN">Odia(India)</option>
+                                    <option value="pa-IN">Punjabi(India)</option>
+                                    <option value="sa-IN">Sanskrit(India)</option>
+                                    <option value="ta-IN">Tamil(India)</option>
+                                    <option value="te-IN">Telugu(India)</option>
+                                    <option value="ur-IN">Urdu(India)</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="selected-lang-code"><strong>Selected Language Code:</strong></label>
+                                <input type="text" class="form-control" id="selected-lang-code" readonly>
+                            </div>
+                        </div>
+                    </div>
+                  <div class="form-group">
+                    <label for="text-to-translate"><strong>Enter the text you'd like to translate:</strong></label>
+                    <textarea class="form-control" name="text_to_translate" id="text-to-translate" rows="5"></textarea>
+                </div>
+                    
+                    <div class="form-group">
+                        <label for="select-language-code"><strong>Select Language:</strong></label>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <select class="form-control" id="select-language-code-2"name="selected_language_code_2"  onchange="updateLanguageCode2()">
+                                    <option value="as-IN">Assamese(India)</option>
+                                    <option value="bn-IN">Bengali(India)</option>
+                                    <option value="bo-IN">Bodo(India)</option>
+                                    <option value="dog-IN">Dogri(India)</option>
+                                    <option value="en">English(India)</option>
+                                    <option value="gu-IN">Gujarati(India)</option>
+                                    <option value="hi-IN">Hindi(India)</option>
+                                    <option value="kn-IN">Kannada(India)</option>
+                                    <option value="ka-IN">Kashmiri(India)</option>
+                                    <option value="kok-IN">Konkani(India)</option>
+                                    <option value="ma-IN">Maithili(India)</option>
+                                    <option value="ml-IN">Malayalam(India)</option>
+                                    <option value="mr-IN">Marathi(India)</option>
+                                    <option value="ne-IN">Nepali(India)</option>
+                                    <option value="or-IN">Odia(India)</option>
+                                    <option value="pa-IN">Punjabi(India)</option>
+                                    <option value="sa-IN">Sanskrit(India)</option>
+                                    <option value="ta-IN">Tamil(India)</option>
+                                    <option value="te-IN">Telugu(India)</option>
+                                    <option value="ur-IN">Urdu(India)</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="selected-lang-code-2"><strong>Selected Language Code:</strong></label>
+                                <input type="text" class="form-control" id="selected-lang-code-2" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary mb-2" id="translate">Translate text</button></br>
+
+                    <div class="form-group">
+                        <label for="text-to-response"><strong>Translated text:</strong></label>
+                        <textarea readonly class="form-control" id="translation-result" rows="5">{{ translation }}</textarea>
+                    </div>
+                    
+                    <div id="detected-language" style="display: none">
+                        <strong>Detected language:</strong> <span id="detected-language-result"></span><br />
+                        <strong>Detection confidence:</strong> <span id="confidence"></span><br /><br />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="static/scripts/main.js"></script>
+
+   
+</body>
+</html>
